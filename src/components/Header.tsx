@@ -7,6 +7,7 @@ const navLinks = [
   { label: "Pricing", href: "#pricing" },
   { label: "Compare GPUs", href: "#compare" },
   { label: "Use Cases", href: "#use-cases" },
+  { label: "Contact", href: "#contact" },
   { label: "FAQ", href: "#faq" },
 ];
 

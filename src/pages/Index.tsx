@@ -8,6 +8,7 @@ import { Benchmarks } from "@/components/Benchmarks";
 import { UseCases } from "@/components/UseCases";
 import { WhyCloudpe } from "@/components/WhyCloudpe";
 import { GetStarted } from "@/components/GetStarted";
+import { ContactForm } from "@/components/ContactForm";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 
@@ -25,6 +26,7 @@ const Index = () => {
         <UseCases />
         <WhyCloudpe />
         <GetStarted />
+        <ContactForm />
         <FAQ />
       </main>
       <Footer />

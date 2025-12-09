@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Server, Cpu, HardDrive, Network } from "lucide-react";
+import { AnimatedSection, AnimatedStagger, AnimatedItem } from "@/components/AnimatedSection";
 
 const features = [
   {
@@ -40,7 +41,7 @@ export function BareMetal() {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Content */}
-            <div>
+            <AnimatedSection>
               <div className="text-sm font-semibold text-primary uppercase tracking-wider mb-4">
                 Enterprise Grade
               </div>
@@ -69,23 +70,22 @@ export function BareMetal() {
               <Button variant="hero" size="lg">
                 Request Bare-Metal Quote
               </Button>
-            </div>
+            </AnimatedSection>
 
             {/* Feature cards */}
-            <div className="grid grid-cols-2 gap-4">
+            <AnimatedStagger className="grid grid-cols-2 gap-4">
               {features.map((feature, index) => (
-                <div 
-                  key={index}
-                  className="p-6 rounded-2xl card-gradient border border-border hover:border-primary/40 transition-all duration-300 group"
-                >
-                  <div className="p-3 rounded-xl bg-primary/10 w-fit mb-4 group-hover:bg-primary/20 transition-colors">
-                    <feature.icon className="w-6 h-6 text-primary" />
+                <AnimatedItem key={index}>
+                  <div className="p-6 rounded-2xl card-gradient border border-border hover:border-primary/40 transition-all duration-300 group h-full">
+                    <div className="p-3 rounded-xl bg-primary/10 w-fit mb-4 group-hover:bg-primary/20 transition-colors">
+                      <feature.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="font-semibold mb-2">{feature.title}</h3>
+                    <p className="text-sm text-muted-foreground">{feature.description}</p>
                   </div>
-                  <h3 className="font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-sm text-muted-foreground">{feature.description}</p>
-                </div>
+                </AnimatedItem>
               ))}
-            </div>
+            </AnimatedStagger>
           </div>
         </div>
       </div>

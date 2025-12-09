@@ -6,6 +6,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { AnimatedSection, AnimatedStagger, AnimatedItem } from "@/components/AnimatedSection";
 
 const gpuData = [
   {
@@ -71,72 +72,73 @@ export function GPUComparison() {
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section header */}
-          <div className="text-center mb-16">
+          <AnimatedSection className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Choose the <span className="text-gradient">Right GPU</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Compare our full NVIDIA GPU lineup. H200 tops the stack for memory-intensive LLMs.
             </p>
-          </div>
+          </AnimatedSection>
 
           {/* Comparison table */}
-          <div className="rounded-2xl border border-border overflow-hidden mb-12 card-gradient">
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader>
-                  <TableRow className="border-border hover:bg-transparent">
-                    <TableHead className="text-foreground font-semibold">GPU</TableHead>
-                    <TableHead className="text-foreground font-semibold">Architecture</TableHead>
-                    <TableHead className="text-foreground font-semibold">VRAM & Type</TableHead>
-                    <TableHead className="text-foreground font-semibold">Bandwidth</TableHead>
-                    <TableHead className="text-foreground font-semibold">Best For</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {gpuData.map((gpu) => (
-                    <TableRow 
-                      key={gpu.name}
-                      className={`border-border ${gpu.highlight ? 'bg-primary/10 hover:bg-primary/15' : 'hover:bg-secondary/50'}`}
-                    >
-                      <TableCell className="font-bold">
-                        {gpu.highlight ? (
-                          <span className="text-gradient">{gpu.name}</span>
-                        ) : (
-                          gpu.name
-                        )}
-                      </TableCell>
-                      <TableCell className="text-muted-foreground">{gpu.architecture}</TableCell>
-                      <TableCell>
-                        <span className={gpu.highlight ? 'text-primary font-medium' : 'text-muted-foreground'}>
-                          {gpu.vram}
-                        </span>
-                      </TableCell>
-                      <TableCell>
-                        <span className={gpu.highlight ? 'text-primary font-medium' : 'text-muted-foreground'}>
-                          {gpu.bandwidth}
-                        </span>
-                      </TableCell>
-                      <TableCell className="text-muted-foreground max-w-xs">{gpu.bestFor}</TableCell>
+          <AnimatedSection delay={0.1}>
+            <div className="rounded-2xl border border-border overflow-hidden mb-12 card-gradient">
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow className="border-border hover:bg-transparent">
+                      <TableHead className="text-foreground font-semibold">GPU</TableHead>
+                      <TableHead className="text-foreground font-semibold">Architecture</TableHead>
+                      <TableHead className="text-foreground font-semibold">VRAM & Type</TableHead>
+                      <TableHead className="text-foreground font-semibold">Bandwidth</TableHead>
+                      <TableHead className="text-foreground font-semibold">Best For</TableHead>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+                  </TableHeader>
+                  <TableBody>
+                    {gpuData.map((gpu) => (
+                      <TableRow 
+                        key={gpu.name}
+                        className={`border-border ${gpu.highlight ? 'bg-primary/10 hover:bg-primary/15' : 'hover:bg-secondary/50'}`}
+                      >
+                        <TableCell className="font-bold">
+                          {gpu.highlight ? (
+                            <span className="text-gradient">{gpu.name}</span>
+                          ) : (
+                            gpu.name
+                          )}
+                        </TableCell>
+                        <TableCell className="text-muted-foreground">{gpu.architecture}</TableCell>
+                        <TableCell>
+                          <span className={gpu.highlight ? 'text-primary font-medium' : 'text-muted-foreground'}>
+                            {gpu.vram}
+                          </span>
+                        </TableCell>
+                        <TableCell>
+                          <span className={gpu.highlight ? 'text-primary font-medium' : 'text-muted-foreground'}>
+                            {gpu.bandwidth}
+                          </span>
+                        </TableCell>
+                        <TableCell className="text-muted-foreground max-w-xs">{gpu.bestFor}</TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </div>
             </div>
-          </div>
+          </AnimatedSection>
 
           {/* Recommendations */}
-          <div className="grid md:grid-cols-3 gap-6">
+          <AnimatedStagger className="grid md:grid-cols-3 gap-6">
             {recommendations.map((rec, index) => (
-              <div 
-                key={index}
-                className="p-6 rounded-2xl border border-border bg-card hover:border-primary/40 transition-colors"
-              >
-                <div className="text-lg font-bold text-gradient mb-2">Pick {rec.gpu}</div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{rec.description}</p>
-              </div>
+              <AnimatedItem key={index}>
+                <div className="p-6 rounded-2xl border border-border bg-card hover:border-primary/40 transition-colors h-full">
+                  <div className="text-lg font-bold text-gradient mb-2">Pick {rec.gpu}</div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{rec.description}</p>
+                </div>
+              </AnimatedItem>
             ))}
-          </div>
+          </AnimatedStagger>
         </div>
       </div>
     </section>
