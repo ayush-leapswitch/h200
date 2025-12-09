@@ -57,10 +57,6 @@ const recommendations = [
     description: "When memory & throughput are your bottlenecks – large LLMs, long context RAG, multi-tenant inference APIs."
   },
   {
-    gpu: "H100 / A100",
-    description: "When training cost is your key variable and model sizes are still manageable."
-  },
-  {
     gpu: "L40S / L4",
     description: "For GPU-accelerated SaaS: image/video, generative media, classical ML and smaller models."
   }
@@ -129,7 +125,7 @@ export function GPUComparison() {
           </AnimatedSection>
 
           {/* Recommendations */}
-          <AnimatedStagger className="grid md:grid-cols-3 gap-6">
+          <AnimatedStagger className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {recommendations.map((rec, index) => (
               <AnimatedItem key={index}>
                 <div className="p-6 rounded-2xl border border-border bg-card hover:border-primary/40 transition-colors h-full">
