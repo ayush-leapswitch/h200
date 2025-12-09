@@ -74,8 +74,8 @@ export function Hero() {
             <Button variant="hero" size="lg">
               Launch H200 in Mumbai
             </Button>
-            <Button variant="heroOutline" size="lg">
-              Talk to a GPU Specialist
+            <Button variant="heroOutline" size="lg" asChild>
+              <a href="#contact">Talk to a GPU Specialist</a>
             </Button>
           </motion.div>
 
