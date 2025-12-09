@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Cpu, Zap, MapPin, Server } from "lucide-react";
+import { Cpu, Zap, MapPin, Server, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 
 const highlights = [
-  { icon: Zap, text: "₹300/hour – 1× NVIDIA H200, 16 vCPU, 128 GB RAM, 250 GB NVMe" },
-  { icon: MapPin, text: "Mumbai Tier-4 DC – low-latency to Indian users & data residency" },
-  { icon: Server, text: "Bare-metal or Cloud VMs – up to 8× H200 per node" },
-  { icon: Cpu, text: "Full GPU catalog – A100, L4, L40S, H200 available today" },
+  { icon: Zap, text: "₹300/hour – 1× NVIDIA H200, 16 vCPU, 128 GB RAM, 250 GB NVMe", gradient: "from-amber-500 to-orange-600" },
+  { icon: MapPin, text: "Mumbai Tier-4 DC – low-latency to Indian users & data residency", gradient: "from-emerald-500 to-teal-600" },
+  { icon: Server, text: "Bare-metal or Cloud VMs – up to 8× H200 per node", gradient: "from-violet-500 to-purple-600" },
+  { icon: Cpu, text: "Full GPU catalog – A100, L4, L40S, H200 available today", gradient: "from-cyan-500 to-blue-600" },
 ];
 
 export function Hero() {
@@ -71,11 +71,11 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
           >
-            <Button variant="hero" size="lg">
-              Launch H200 in Mumbai
+            <Button variant="hero" size="lg" asChild>
+              <a href="https://cloudpe.com" target="_blank" rel="noopener noreferrer">Launch H200 in Mumbai</a>
             </Button>
             <Button variant="heroOutline" size="lg" asChild>
-              <a href="#contact">Talk to a GPU Specialist</a>
+              <a href="https://meetings.hubspot.com/knj/sales-team-round-robin" target="_blank" rel="noopener noreferrer">Talk to a GPU Specialist</a>
             </Button>
           </motion.div>
 
@@ -92,15 +92,31 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-                whileHover={{ scale: 1.02, y: -2 }}
-                className="flex items-start gap-3 p-4 rounded-xl bg-card/50 border border-border/50 backdrop-blur-sm text-left hover:border-primary/30 transition-colors"
+                whileHover={{ scale: 1.03, y: -4 }}
+                className="group relative flex items-start gap-4 p-5 rounded-2xl bg-gradient-to-br from-card/80 to-card/40 border border-border/30 backdrop-blur-md text-left hover:border-primary/50 transition-all duration-300 overflow-hidden"
               >
-                <div className="p-2 rounded-lg bg-primary/10">
-                  <item.icon className="w-5 h-5 text-primary" />
+                {/* Glow effect on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${item.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
+                
+                <div className={`relative flex-shrink-0 p-3 rounded-xl bg-gradient-to-br ${item.gradient} shadow-lg`}>
+                  <item.icon className="w-5 h-5 text-white" />
                 </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">{item.text}</p>
+                <p className="relative text-sm text-foreground/80 leading-relaxed font-medium">{item.text}</p>
               </motion.div>
             ))}
+          </motion.div>
+
+          {/* Contact email */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="mt-8 flex items-center justify-center gap-2 text-muted-foreground"
+          >
+            <Mail className="w-4 h-4" />
+            <a href="mailto:sales@cloudpe.com" className="text-sm hover:text-primary transition-colors">
+              sales@cloudpe.com
+            </a>
           </motion.div>
         </div>
       </div>
