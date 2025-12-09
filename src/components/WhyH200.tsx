@@ -1,4 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
+import { AnimatedSection, AnimatedStagger, AnimatedItem } from "@/components/AnimatedSection";
 
 const features = [
   {
@@ -36,38 +37,37 @@ export function WhyH200() {
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section header */}
-          <div className="text-center mb-16">
+          <AnimatedSection className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
               Built for <span className="text-gradient">Massive LLMs</span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Long Context & High-Throughput Inference. The H200 is the upgrade your AI workloads need.
             </p>
-          </div>
+          </AnimatedSection>
 
           {/* Stats grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+          <AnimatedStagger className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
             {features.map((feature, index) => (
-              <div 
-                key={index}
-                className="group p-6 rounded-2xl card-gradient border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-glow"
-              >
-                <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">
-                  {feature.stat}
+              <AnimatedItem key={index}>
+                <div className="group p-6 rounded-2xl card-gradient border border-border hover:border-primary/40 transition-all duration-300 hover:shadow-glow h-full">
+                  <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">
+                    {feature.stat}
+                  </div>
+                  <div className="text-sm font-semibold text-foreground mb-2">
+                    {feature.label}
+                  </div>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
-                <div className="text-sm font-semibold text-foreground mb-2">
-                  {feature.label}
-                </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
+              </AnimatedItem>
             ))}
-          </div>
+          </AnimatedStagger>
 
           {/* Description with benefits */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <AnimatedSection>
               <h3 className="text-2xl font-bold mb-4">
                 Why Upgrade to H200?
               </h3>
@@ -84,22 +84,24 @@ export function WhyH200() {
                   </div>
                 ))}
               </div>
-            </div>
+            </AnimatedSection>
 
             {/* Callout box */}
-            <div className="relative">
-              <div className="absolute inset-0 bg-glow opacity-30" />
-              <div className="relative p-8 rounded-2xl border border-primary/30 bg-primary/5 backdrop-blur-sm">
-                <div className="text-primary text-sm font-semibold uppercase tracking-wider mb-4">
-                  For AI Founders
+            <AnimatedSection delay={0.2}>
+              <div className="relative">
+                <div className="absolute inset-0 bg-glow opacity-30" />
+                <div className="relative p-8 rounded-2xl border border-primary/30 bg-primary/5 backdrop-blur-sm">
+                  <div className="text-primary text-sm font-semibold uppercase tracking-wider mb-4">
+                    For AI Founders
+                  </div>
+                  <p className="text-lg font-medium leading-relaxed">
+                    "If A100 is 'good enough', H200 is the GPU you pick when you 
+                    <span className="text-gradient font-bold"> never want to think about context length, 
+                    KV cache, or batch size constraints</span> again."
+                  </p>
                 </div>
-                <p className="text-lg font-medium leading-relaxed">
-                  "If A100 is 'good enough', H200 is the GPU you pick when you 
-                  <span className="text-gradient font-bold"> never want to think about context length, 
-                  KV cache, or batch size constraints</span> again."
-                </p>
               </div>
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </div>
