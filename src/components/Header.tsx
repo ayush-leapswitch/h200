@@ -20,10 +20,10 @@ export function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">C</span>
+            <div className="w-8 h-8 rounded-lg bg-black flex items-center justify-center">
+              <span className="text-white font-bold text-sm">C</span>
             </div>
-            <span className="font-bold text-lg">Cloudpe</span>
+            <span className="font-bold text-lg text-black">Cloudpe</span>
           </a>
 
           {/* Desktop Navigation */}
@@ -32,7 +32,7 @@ export function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-sm text-black/80 hover:text-black transition-colors"
               >
                 {link.label}
               </a>
@@ -51,7 +51,7 @@ export function Header() {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2"
+            className="md:hidden p-2 text-black"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
@@ -64,13 +64,13 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-border">
+          <div className="md:hidden py-4 border-t border-black/20">
             <nav className="flex flex-col gap-4">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-sm text-black/80 hover:text-black transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
